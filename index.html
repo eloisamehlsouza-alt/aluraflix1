@@ -1,22 +1,295 @@
-<!DOCTYPE html> 
-<html lang="en">
- <head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Document</title> 
-</head><title>Blog</title> 
-<body> 
+<! html> 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitGlow // Autocuidado para Devs</title>
+    <style>
+        :root {
+            --bg-main: #0d1117;
+            --bg-card: #161b22;
+            --border-color: #30363d;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --git-green-1: #0e4429;
+            --git-green-2: #006d32;
+            --git-green-3: #26a641;
+            --git-green-4: #39d353;
+            --accent-glow: #79c0ff;
+        }
 
-</body> 
-</html> 
-<heater></heater> 
-<h1>Eloisa blog tech</h1> 
-<p>Vou compartilhar conhecimentos sobre tecnologia e programação</p> 
-<header></header> 
-</body> 
-</html> 
-<main></main> 
-<h2>Meu primeiro post</h2> 
-<p>Boas-vindas ao meu novo blog! Aqui vou compartilhar dicas de programação e curiosidades da área de tecnologia.</p> 
-<p>by: Eloisa</p> 
-<main></main>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--git-green-4);
+        }
+
+        .badge {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--accent-glow);
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .profile-grid {
+                grid-template-columns: 280px 1fr;
+            }
+        }
+
+        .sidebar img {
+            width: 100%;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: #21262d;
+            margin-bottom: 15px;
+        }
+
+        .sidebar h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .sidebar p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: #21262d;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #30363d;
+        }
+
+        .main-content h2 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .readme-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 25px;
+        }
+
+        .readme-card h3 {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .readme-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .readme-card li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: start;
+            gap: 10px;
+        }
+
+        .readme-card li::before {
+            content: "✓";
+            color: var(--git-green-3);
+            font-weight: bold;
+        }
+
+        .contribution-graph {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        .graph-title {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .grid-days {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 4px;
+            min-width: 500px;
+        }
+
+        .grid-col {
+            display: grid;
+            grid-template-rows: repeat(7, 1fr);
+            gap: 4px;
+        }
+
+        .day {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 2px;
+            background-color: #161b22;
+            border: 1px solid rgba(27, 31, 35, 0.06);
+        }
+
+        /* Níveis de commits de autocuidado */
+        .lvl-1 { background-color: var(--git-green-1); }
+        .lvl-2 { background-color: var(--git-green-2); }
+        .lvl-3 { background-color: var(--git-green-3); }
+        .lvl-4 { background-color: var(--git-green-4); }
+
+        .graph-footer {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        .legend {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .legend .day {
+            width: 12px;
+            height: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header estilo GitHub -->
+    <header>
+        <div class="logo">
+            <span>💻</span> git-selfcare / <strong>wellness-streak</strong>
+        </div>
+        <div class="badge">Public Template</div>
+    </header>
+
+    <div class="profile-grid">
+        <!-- Barra Lateral / Perfil -->
+        <aside class="sidebar">
+            <!-- SVG placeholder para avatar limpo -->
+            <svg viewBox="0 0 100 100" style="width:100%; border-radius:50%; border: 1px solid var(--border-color); background:#161b22; margin-bottom:15px;">
+                <circle cx="50" cy="45" r="20" fill="#8b949e"/>
+                <path d="M20,90 C20,70 40,60 50,60 C60,60 80,70 80,90" fill="#8b949e"/>
+            </svg>
+            <h1>Dev Saudável</h1>
+            <p>selfcare_engineer</p>
+            <p style="color: var(--text-main); font-style: italic;">"Corrigindo bugs na postura e buildando hábitos saudáveis."</p>
+            
+            <button class="btn" onclick="alert('Água bebida! Próximo commit agendado.')">🥤 Beber Água (Commit)</button>
+            <button class="btn" onclick="alert('Alongamento concluído! Pull request aceito.')">🧘 Alongar (Pull Request)</button>
+        </aside>
+
+        <!-- Conteúdo Principal -->
+        <main class="main-content">
+            
+            <!-- Card README.md -->
+            <div class="readme-card">
+                <h3>README.md</h3>
+                <p style="margin-bottom: 15px; color: var(--text-muted);">
+                    Repositório focado na otimização da saúde mental e física de pessoas desenvolvedoras. Evite o <code>stack overflow</code> mental.
+                </p>
+                <h4 style="margin: 15px 0 10px 0; color: var(--accent-glow);">Daily Actions (Scripts de Rotina):</h4>
+                <ul>
+                    <li><strong>Regra 20-20-20:</strong> A cada 20 minutos olhando para a tela, olhe para algo a 6 metros por 20 segundos.</li>
+                    <li><strong>Refatoração Postural:</strong> Ombros para trás, coluna alinhada e monitor na altura dos olhos.</li>
+                    <li><strong>Garbage Collection:</strong> Desconecte-se de telas 30 minutos antes de dormir.</li>
+                    <li><strong>Drink Water Protocol:</strong> Mantenha uma garrafa cheia ao lado do setup.</li>
+                </ul>
+            </div>
+
+            <!-- Gráfico de Contribuição de Autocuidado -->
+            <h2>Histórico de Hábitos Saudáveis</h2>
+            <div class="contribution-graph">
+                <div class="graph-title">120 commits de bem-estar este ano</div>
+                
+                <div class="grid-days">
+                    <!-- Colunas simulando semanas e dias do GitHub -->
+                    <div class="grid-col">
+                        <div class="day lvl-1"></div><div class="day lvl-2"></div><div class="day"></div>
+                        <div class="day lvl-3"></div><div class="day"></div><div class="day lvl-1"></div><div class="day lvl-4"></div>
+                    </div>
+                    <div class="grid-col">
+                        <div class="day"></div><div class="day lvl-1"></div><div class="day lvl-2"></div>
+                        <div class="day"></div><div class="day lvl-3"></div><div class="day"></div><div class="day"></div>
+                    </div>
+                    <div class="grid-col">
+                        <div class="day lvl-4"></div><div class="day lvl-3"></div><div class="day lvl-2"></div>
+                        <div class="day lvl-1"></div><div class="day"></div><div class="day lvl-4"></div><div class="day lvl-3"></div>
+                    </div>
+                    <div class="grid-col">
+                        <div class="day"></div><div class="day"></div><div class="day lvl-1"></div>
+                        <div class="day lvl-2"></div><div class="day"></div><div class="day"></div><div class="day lvl-1"></div>
+                    </div>
+                    <div class="grid-col">
+                        <div class="day lvl-2"></div><div class="day lvl-3"></div><div class="day lvl-4"></div>
+                        <div class="day"></div><div class="day lvl-1"></div><div class="day lvl-2"></div><div class="day"></div>
+                    </div>
+                    <div class="grid-col">
+                        <div class="day"></div><div class="day lvl-1"></div><div class="day"></div>
