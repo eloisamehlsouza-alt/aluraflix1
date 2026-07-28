@@ -3,95 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espaço Autocuidado | Nutra sua Mente e Corpo</title>
+    <title>Meu Espaço de Autocuidado</title>
     <style>
-        /* Estilos Globais e Paleta de Cores Confortáveis */
         :root {
-            --primary: #cc6fae; /* Verde sálvia relaxante */
-            --secondary: #4d19c7; /* Terracota suave */
-            --bg-light: #faf7f2; /* Off-white aconchegante */
-            --text-dark: #d5309c; /* pink color
-            --white: #c24cb8;
-        }
-
-        {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --roxo-pastel: #E8DFFF;
+            --azul-bebe: #D6E4FF;
+            --azul-medio: #A3C1AD;
+            --roxo-medio: #B2A4FF;
+            --texto: #3B3A4A;
+            --branco: #FFFFFF;
         }
 
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--roxo-pastel), var(--azul-bebe));
+            background-attachment: fixed;
+            color: var(--texto);
+            margin: 0;
+            padding: 0;
             line-height: 1.6;
         }
 
         header {
-            background-color: purple;
-            padding: 20px;
+            background-color: var(--branco);
             text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            padding: 50px 20px;
+            border-bottom: 5px solid var(--roxo-medio);
         }
 
         header h1 {
-            color: black;
-            font-size: 24px;
-            letter-spacing: 1px;
+            margin: 0;
+            font-size: 2.5rem;
+            color: var(--texto);
         }
 
-        /* Banner Hero */
-        .hero {
-            background: linear-gradient(rgba(48, 52, 65, 0.6), rgba(110, 142, 118, 0.8)), url('https://unsplash.com') no-repeat center center/cover;
-            color: var(--white);
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
+        header p {
+            font-style: italic;
+            color: #63637A;
+            margin-top: 10px;
         }
 
-        .hero h2 {
-            font-size: 36px;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            max-width: 600px;
-        }
-
-        /* Container Principal */
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 40px auto;
             padding: 0 20px;
         }
 
-        .section-title {
+        /* Seção Interativa de Frases */
+        .frase-box {
+            background-color: var(--branco);
+            padding: 30px;
             text-align: center;
-            color: var(--primary);
-            margin-bottom: 30px;
-            font-size: 28px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
-        /* Grid de Pilares do Autocuidado */
+        .frase-box p {
+            font-size: 1.2rem;
+            font-weight: 500;
+            min-height: 50px;
+        }
+
+        .btn-frase {
+            background-color: var(--roxo-medio);
+            color: var(--branco);
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .btn-frase:hover {
+            background-color: #9381FF;
+        }
+
+        /* Grid de Cards */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         .card {
-            background-color: white;
-            border-radius: 12px;
+            background: var(--branco);
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(138, 22, 22, 0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: transform 0.3s ease;
         }
 
@@ -110,105 +112,156 @@
         }
 
         .card-content h3 {
-            color: var(--primary);
-            margin-bottom: 10px;
+            margin-top: 0;
+            color: var(--roxo-medio);
         }
 
-        /* Sessão de Dicas Rápidas */
-        .tips {
-            background-color: var(--white);
+        /* Seção de Checklist de Hábitos */
+        .habitos-box {
+            background-color: var(--branco);
             padding: 30px;
-            border-radius: 12px;
-            border-left: 5px solid var(--secondary);
-            margin-bottom: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
-        .tips h3 {
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-
-        .tips ul {
-            list-style-position: inside;
-        }
-
-        .tips li {
-            margin-bottom: 10px;
-        }
-
-        /* Rodapé */
-        footer {
-            background-color: var(--primary);
-            color: var(--white);
+        .habitos-box h2 {
+            margin-top: 0;
+            color: var(--roxo-medio);
             text-align: center;
-            padding: 20px;
+        }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+            max-width: 500px;
+            margin: 20px auto 0 auto;
+        }
+
+        .checklist li {
+            padding: 12px 0;
+            border-bottom: 1px solid #F0F0F0;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-right: 15px;
+            width: 20px;
+            height: 20px;
+            accent-color: var(--roxo-medio);
+            cursor: pointer;
+        }
+
+        .checklist input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+            color: #A0A0A0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--branco);
             margin-top: 60px;
-            font-size: 14px;
-        }
-        p{
-            color:black;
-        }
-        header{
-            background-color: pink;
+            border-top: 2px solid var(--roxo-pastel);
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>🌿 Espaço Autocuidado</h1>
+        <h1>Espaço Autocuidado 💜✨</h1>
+        <p>Um cantinho calmo e acolhedor para a sua mente.</p>
     </header>
 
-    <div class="hero">
-        <h2>Sua jornada de bem-estar começa aqui</h2>
-        <p>Encontre equilíbrio, cultive a paz mental e reserve um momento do dia exclusivamente para você.</p>
-    </div>
-
     <div class="container">
-        <h2 class="section-title">Os Três Pilares da Rotina</h2>
         
-        <div class="grid">
-            <!-- Card 1: Mente -->
-            <div class="card">
-                <img src="https://unsplash.com" alt="Meditação e Mente Alinhada">
-                <div class="card-content">
-                    <h3>Autocuidado Mental</h3>
-                    <p>Pratique a quietude através da meditação diária ou da escrita terapêutica. Limitar o tempo de tela ajuda a acalmar os pensamentos ansiosos.</p>
-                </div>
-            </div>
-
-            <!-- Card 2: Corpo -->
-            <div class="card">
-                <img src="https://unsplash.com" alt="Exercício e Alongamento">
-                <div class="card-content">
-                    <h3>Autocuidado Físico</h3>
-                    <p>Nutra o seu templo. Beba água regularmente, prepare refeições coloridas e movimente seu corpo com alongamentos leves ou caminhadas ao ar livre.</p>
-                </div>
-            </div>
-
-            <!-- Card 3: Espaço -->
-            <div class="card">
-                <img src="https://unsplash.com" alt="Rotina de Skincare e Ambiente">
-                <div class="card-content">
-                    <h3>Autocuidado Espiritual</h3>
-                    <p>Desconecte-se do caos exterior. Acenda uma vela perfumada, tome um banho relaxante ou leia um capítulo daquele livro que você tanto gosta.</p>
-                </div>
-            </div>
+        <!-- Bloco de Frases do Dia -->
+        <div class="frase-box">
+            <p id="frase-texto">"Você é a sua prioridade mais bonita."</p>
+            <button class="btn-frase" onclick="mudarFrase()">Receber Carinho ✨</button>
         </div>
 
-        <div class="tips">
-            <h3>📝 Pequenos rituais para testar hoje:</h3>
-            <ul>
-                <li>Respire fundo por 3 vezes seguidas antes de levantar da cama.</li>
-                <li>Fique 5 minutos sob a luz do sol pela manhã.</li>
-                <li>Agradeça mentalmente por três pequenas coisas que aconteceram no seu dia.</li>
+        <!-- Galeria de Ideias -->
+        <div class="grid">
+            
+            <div class="card">
+                <img src="https://unsplash.com" alt="Rotina de Skincare">
+                <div class="card-content">
+                    <h3>Rotina Matinal</h3>
+                    <p>Comece o dia cuidando da sua pele e da sua mente. Separe alguns minutos para você antes de focar nas obrigações.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://unsplash.com" alt="Meditação">
+                <div class="card-content">
+                    <h3>Pausa Essencial</h3>
+                    <p>A respiração profunda acalma o coração. Inspire o que te faz bem e expire todas as tensões acumuladas.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://unsplash.com" alt="Chá e Leitura">
+                <div class="card-content">
+                    <h3>Aconchego</h3>
+                    <p>Prepare uma bebida quentinha, pegue um livro ou apenas aproveite o silêncio. Descansar também é produtivo.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Checklist Interativo -->
+        <div class="habitos-box">
+            <h2>Metas de Amor-Próprio para Hoje</h2>
+            <ul class="checklist">
+                <li>
+                    <label><input type="checkbox"> <span>Beber pelo menos 2L de água</span></label>
+                </li>
+                <li>
+                    <label><input type="checkbox"> <span>Ficar 30 min longe das telas</span></label>
+                </li>
+                <li>
+                    <label><input type="checkbox"> <span>Fazer um lanche saudável com calma</span></label>
+                </li>
+                <li>
+                    <label><input type="checkbox"> <span>Agradecer por 3 coisas boas hoje</span></label>
+                </li>
+                <li>
+                    <label><input type="checkbox"> <span>Alongar o corpo por 5 minutos</span></label>
+                </li>
             </ul>
         </div>
+
     </div>
 
     <footer>
-        <p>&copy; 2026 Meu Espaço de Autocuidado. Feito com carinho para o GitHub Pages.</p>
+        <p>Criado com 💜 para lembrar você do seu valor diário.</p>
     </footer>
+
+    <!-- Lógica do Botão de Frases -->
+    <script>
+        const frases = [
+            "Você é a sua prioridade mais bonita.",
+            "Respire fundo. Você está fazendo o seu melhor.",
+            "Não apresse o seu processo. Coisas boas levam tempo.",
+            "Seu valor não diminui com base na opinião de ninguém.",
+            "Seja gentil com a sua própria mente hoje.",
+            "Sua paz vale mais do que qualquer pressa.",
+            "Você merece o amor e o cuidado que distribui por aí."
+        ];
+
+        function mudarFrase() {
+            const elementoFrase = document.getElementById('frase-texto');
+            let novaFrase;
+            
+            do {
+                novaFrase = frases[Math.floor(Math.random() * frases.length)];
+            } while (novaFrase === elementoFrase.innerText);
+            
+            elementoFrase.innerText = `"${novaFrase}"`;
+        }
+    </script>
 
 </body>
 </html>
